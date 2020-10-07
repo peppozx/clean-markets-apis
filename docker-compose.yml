@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+        clients-api:
+                container_name: LETT_POC_CLIENTS_API
+                build: './clients-api'
+                volumes:
+                        - ./clients-api:/node-app
+                        - ./clients-api/node_modules:/node-app/node_modules
+                environment:
+                        NODE_ENV: development
+                depends_on:
+                        - clients-db
+                links:
+                        - clients-db
+                ports:
+                        - '3333:3333'
+                command: npm run start:dev
+                expose:
+                        - '3333'
+        clients-db:
+                image: 'mongo'
+                container_name: LETT_POC_CLIENTS_API_MONGO
+                ports:
+                        - '27017:27017'
+        orders-api:
+                container_name: LETT_POC_ORDERS_API
+                build: './orders-api'
+                volumes:
+                        - ./orders-api:/node-app
+                        - ./orders-api/node_modules:/node-app/node_modules
+                environment:
+                        NODE_ENV: development
+                depends_on:
+                        - orders-db
+                links:
+                        - orders-db
+                ports:
+                        - '3334:3334'
+                command: npm run start:dev
+                expose:
+                        - '3334'
+        orders-db:
+                image: 'mongo'
+                container_name: LETT_POC_ORDERS_API_MONGO
+                ports:
+                        - '27018:27017'
+        products-api:
+                container_name: LETT_POC_PRODUCTS_API
+                build: './products-api'
+                volumes:
+                        - ./products-api:/app
+                        - ./products-api/node_modules:/app/node_modules
+                depends_on: 
+                        - products-db
+                links:
+                        - products-db
+                ports:
+                        - '3335:3335'
+                command: npm run server:api
+        products-db:
+                image: mongo
+                container_name: LETT_POC_PRODUCTS_API_MONGO
+                ports:
+                        - "27019:27017"

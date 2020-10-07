@@ -1,0 +1,8 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+yarn.lock
+node_modules
+
+report/*

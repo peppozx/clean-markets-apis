@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  products-api:
+      build: '.'
+      volumes:
+          - ./:/app
+          - ./node_modules:/app/node_modules
+      depends_on: 
+          - product-mongo
+      links:
+          - product-mongo
+      ports:
+          - '3335:3335'
+      command: npm run server:api
+  product-mongo:
+    image: mongo
+    ports:
+      - "27017:27017"

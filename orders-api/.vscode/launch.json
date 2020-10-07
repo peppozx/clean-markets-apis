@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "launch-orders-api",
+            "port": 9229,
+            "restart": true,
+            "preLaunchTask": "run start:docker",
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/home/node/app",
+            "sourceMapPathOverrides": {
+                "<WORKDIR>/*": "${workspaceRoot}/*"
+            },
+            "timeout": 30000,
+            "smartStep": true,
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**/*.js"
+            ],
+            "sourceMaps": true
+        }
+    ]
+}

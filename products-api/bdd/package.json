@@ -1,0 +1,22 @@
+{
+  "name": "bdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --exit",
+    "test:report": "cucumber-js --exit --format json:report/output.json && node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "axios": "^0.20.0",
+    "cucumber": "^6.0.5",
+    "mongodb": "^3.6.2"
+  },
+  "devDependencies": {
+    "cucumber-html-reporter": "^5.2.0"
+  }
+}
